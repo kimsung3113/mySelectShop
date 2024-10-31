@@ -42,7 +42,7 @@ public class Product extends Timestamped {
     private User user;
 
     @OneToMany(mappedBy = "product")
-    private List<ProductFolder> ProductFolderList = new ArrayList<>();
+    private List<ProductFolder> productFolderList = new ArrayList<>();
 
     public Product(ProductRequestDto requestDto, User user) {
         this.title = requestDto.getTitle();
