@@ -48,6 +48,9 @@ public class ProductService {
         return new ProductResponseDto(product);
     }
 
+    // return 할때 생성자 안에서 지연로딩(Lazy)가 일어나고 그로인해 Transactional 환경이 필요한데
+    // 조회하는 거라 성능을 높이기 위해 readOnly = true를 설정한다.
+    @Transactional(readOnly = true)
     public Page<ProductResponseDto> getProducts(User user, int page, int size, String sortBy, boolean isAsc) {
 
         Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;
